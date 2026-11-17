@@ -2,8 +2,13 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowUpRight, Eye, X } from "@phosphor-icons/react";
+import {
+  EASE_EDITORIAL,
+  MotionReveal,
+  SCROLL_VIEWPORT,
+} from "@/components/MotionReveal";
 import {
   PROJECT_FILTERS,
   PROJECTS,
@@ -16,6 +21,7 @@ export function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(
     null
   );
+  const prefersReducedMotion = useReducedMotion();
 
   const filteredProjects =
     activeFilter === "all"
@@ -40,7 +46,7 @@ export function ProjectsSection() {
     >
       <div className="mx-auto max-w-[1280px] border-t border-[#FBF4DA]/12 pt-16 md:pt-24">
         {/* Section Header + Category Filters */}
-        <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+        <MotionReveal className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-lg font-medium text-[#FFBC03]">
               Featured Case Studies
@@ -82,7 +88,7 @@ export function ProjectsSection() {
               );
             })}
           </div>
-        </div>
+        </MotionReveal>
 
         {/* 2-Column Editorial Showcase Grid */}
         {filteredProjects.length === 0 ? (
@@ -104,9 +110,14 @@ export function ProjectsSection() {
               <motion.article
                 key={project.id}
                 layout
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.04 }}
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={SCROLL_VIEWPORT}
+                transition={{
+                  duration: prefersReducedMotion ? 0 : 0.5,
+                  delay: prefersReducedMotion ? 0 : (index % 2) * 0.08,
+                  ease: EASE_EDITORIAL,
+                }}
                 className="group relative flex flex-col overflow-hidden rounded-[24px] bg-[#001822]/65 border border-[#FBF4DA]/10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] transition-colors duration-300 hover:border-[#02B08D]/50"
               >
                 {/* Hover Top Edge Illumination */}

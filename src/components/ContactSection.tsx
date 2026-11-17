@@ -10,6 +10,7 @@ import {
   LinkedinLogo,
   WhatsappLogo,
 } from "@phosphor-icons/react";
+import { MotionReveal } from "@/components/MotionReveal";
 import { CONTACT_INFO } from "@/data/portfolio";
 
 export function ContactSection() {
@@ -40,7 +41,7 @@ export function ContactSection() {
           />
 
           <div className="relative z-10 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:items-end">
-            <div className="lg:col-span-7">
+            <MotionReveal className="lg:col-span-7">
               <p className="text-lg font-medium text-[#FFBC03]">
                 Open for Collaborations &amp; Roles
               </p>
@@ -81,10 +82,10 @@ export function ContactSection() {
                   )}
                 </button>
               </div>
-            </div>
+            </MotionReveal>
 
             {/* Social & Direct Channels */}
-            <div className="lg:col-span-5 flex flex-col gap-3">
+            <MotionReveal delay={0.1} className="lg:col-span-5 flex flex-col gap-3">
               <p className="text-xs font-semibold uppercase tracking-[0.08em] text-[#FBF4DA]/65">
                 Direct Channels
               </p>
@@ -145,12 +146,12 @@ export function ContactSection() {
                   <span className="text-xs text-[#FBF4DA]/60">@cakrasyafiq</span>
                 </a>
               </div>
-            </div>
+            </MotionReveal>
           </div>
         </div>
 
         {/* Bottom Colophon */}
-        <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-[#FBF4DA]/10 pt-6 text-xs text-[#FBF4DA]/55 sm:flex-row">
+        <MotionReveal delay={0.08} className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-[#FBF4DA]/10 pt-6 text-xs text-[#FBF4DA]/55 sm:flex-row">
           <div className="flex items-center gap-2.5">
             <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#FFBC03] font-display text-sm font-bold text-[#001822] pt-0.5">
               CS
@@ -158,7 +159,7 @@ export function ContactSection() {
             <span>Cakra Syafiq &mdash; Universitas Brawijaya</span>
           </div>
           <p>&copy; {new Date().getFullYear()} Cakra Syafiq. All rights reserved.</p>
-        </div>
+        </MotionReveal>
       </div>
     </footer>
   );

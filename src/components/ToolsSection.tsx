@@ -1,13 +1,18 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   Brain,
   Code,
   FilmSlate,
   Sparkle,
 } from "@phosphor-icons/react";
+import {
+  EASE_EDITORIAL,
+  MotionReveal,
+  SCROLL_VIEWPORT,
+} from "@/components/MotionReveal";
 import { TOOL_DOMAINS } from "@/data/portfolio";
 
 type DomainFilter = "all" | "coding" | "ai-ml" | "creative";
@@ -20,6 +25,7 @@ const DOMAIN_ICONS: Record<string, React.ReactNode> = {
 
 export function ToolsSection() {
   const [selectedDomain, setSelectedDomain] = useState<DomainFilter>("all");
+  const prefersReducedMotion = useReducedMotion();
 
   const visibleDomains =
     selectedDomain === "all"
@@ -35,66 +41,73 @@ export function ToolsSection() {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
           {/* Left Sticky Editorial Lead + Interactive Domain Switcher */}
           <div className="lg:col-span-4 lg:sticky lg:top-28 lg:self-start">
-            <p className="text-lg font-medium text-[#FFBC03]">
-              Technical &amp; Creative Stack
-            </p>
-            <h2 className="mt-1 font-display text-[clamp(3.8rem,8vw,6.2rem)] font-bold uppercase leading-[0.84] tracking-[-0.01em] text-[#FBF4DA]">
-              TOOLS
-            </h2>
-            <p className="mt-4 max-w-[38ch] text-[0.95rem] leading-[1.6] text-[#FBF4DA]/76">
-              A cross-disciplinary toolkit spanning AI pipelines, production web
-              engineering, and visual storytelling.
-            </p>
+            <MotionReveal>
+              <p className="text-lg font-medium text-[#FFBC03]">
+                Technical &amp; Creative Stack
+              </p>
+              <h2 className="mt-1 font-display text-[clamp(3.8rem,8vw,6.2rem)] font-bold uppercase leading-[0.84] tracking-[-0.01em] text-[#FBF4DA]">
+                TOOLS
+              </h2>
+              <p className="mt-4 max-w-[38ch] text-[0.95rem] leading-[1.6] text-[#FBF4DA]/76">
+                A cross-disciplinary toolkit spanning AI pipelines, production web
+                engineering, and visual storytelling.
+              </p>
 
-            {/* Domain Filter Buttons */}
-            <div
-              role="tablist"
-              aria-label="Filter tools by domain"
-              className="mt-7 flex flex-wrap gap-2"
-            >
-              {[
-                { id: "all", label: "All Domains" },
-                { id: "coding", label: "Software Dev" },
-                { id: "ai-ml", label: "AI & ML" },
-                { id: "creative", label: "Creative Media" },
-              ].map((tab) => {
-                const isActive = selectedDomain === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    type="button"
-                    role="tab"
-                    aria-selected={isActive}
-                    onClick={() => setSelectedDomain(tab.id as DomainFilter)}
-                    className={`relative rounded-full px-4 py-2 text-xs sm:text-sm font-medium transition-colors active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#02B08D] ${
-                      isActive
-                        ? "text-[#001822] font-semibold"
-                        : "bg-white/[0.05] text-[#FBF4DA]/80 border border-[#FBF4DA]/12 hover:border-[#02B08D]/60 hover:text-[#FBF4DA]"
-                    }`}
-                  >
-                    {isActive && (
-                      <motion.span
-                        layoutId="tools-tab-pill"
-                        transition={{ type: "spring", stiffness: 280, damping: 28 }}
-                        className="absolute inset-0 -z-10 rounded-full bg-[#FFBC03]"
-                      />
-                    )}
-                    {tab.label}
-                  </button>
-                );
-              })}
-            </div>
+              {/* Domain Filter Buttons */}
+              <div
+                role="tablist"
+                aria-label="Filter tools by domain"
+                className="mt-7 flex flex-wrap gap-2"
+              >
+                {[
+                  { id: "all", label: "All Domains" },
+                  { id: "coding", label: "Software Dev" },
+                  { id: "ai-ml", label: "AI & ML" },
+                  { id: "creative", label: "Creative Media" },
+                ].map((tab) => {
+                  const isActive = selectedDomain === tab.id;
+                  return (
+                    <button
+                      key={tab.id}
+                      type="button"
+                      role="tab"
+                      aria-selected={isActive}
+                      onClick={() => setSelectedDomain(tab.id as DomainFilter)}
+                      className={`relative rounded-full px-4 py-2 text-xs sm:text-sm font-medium transition-colors active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#02B08D] ${
+                        isActive
+                          ? "text-[#001822] font-semibold"
+                          : "bg-white/[0.05] text-[#FBF4DA]/80 border border-[#FBF4DA]/12 hover:border-[#02B08D]/60 hover:text-[#FBF4DA]"
+                      }`}
+                    >
+                      {isActive && (
+                        <motion.span
+                          layoutId="tools-tab-pill"
+                          transition={{ type: "spring", stiffness: 280, damping: 28 }}
+                          className="absolute inset-0 -z-10 rounded-full bg-[#FFBC03]"
+                        />
+                      )}
+                      {tab.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </MotionReveal>
           </div>
 
           {/* Right Asymmetric Domain Rows */}
           <div className="lg:col-span-8 flex flex-col gap-6">
-            {visibleDomains.map((domain) => (
+            {visibleDomains.map((domain, index) => (
               <motion.div
                 key={domain.id}
                 layout
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.28 }}
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={SCROLL_VIEWPORT}
+                transition={{
+                  duration: prefersReducedMotion ? 0 : 0.5,
+                  delay: prefersReducedMotion ? 0 : index * 0.06,
+                  ease: EASE_EDITORIAL,
+                }}
                 className="group relative overflow-hidden rounded-[24px] bg-[#001822]/65 p-6 sm:p-8 border border-[#FBF4DA]/10 shadow-[0_20px_40px_-15px_rgba(0,0,0,0.5)] transition-colors hover:border-[#02B08D]/40"
               >
                 {/* Subtle Emerald Top-Edge Glow on Hover */}
