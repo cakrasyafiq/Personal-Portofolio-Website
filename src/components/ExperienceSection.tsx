@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Briefcase, Medal, UsersThree } from "@phosphor-icons/react/dist/ssr";
 import { MotionReveal } from "@/components/MotionReveal";
 import { ACHIEVEMENTS, EXPERIENCES } from "@/data/portfolio";
@@ -11,8 +10,8 @@ export function ExperienceSection() {
     >
       <div className="mx-auto max-w-[1280px]">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-12">
-          {/* Left Column: Work, Organizational Leadership & Honors */}
-          <div className="lg:col-span-7 flex flex-col gap-10">
+          {/* Left Column: Editorial Lead & Competitive Honors */}
+          <div className="lg:col-span-5 flex flex-col justify-between gap-10">
             <MotionReveal>
               <p className="text-lg font-medium text-[#FFBC03]">
                 Journey &amp; Leadership
@@ -20,9 +19,42 @@ export function ExperienceSection() {
               <h2 className="mt-1 font-display text-[clamp(3.6rem,7.5vw,5.8rem)] font-bold uppercase leading-[0.86] tracking-[-0.01em] text-[#FBF4DA]">
                 EXPERIENCE &amp; HONORS
               </h2>
+              <p className="mt-4 max-w-[40ch] text-[0.95rem] leading-[1.6] text-[#FBF4DA]/76">
+                Production engineering internships, student organization
+                leadership, and competitive milestones.
+              </p>
             </MotionReveal>
 
-            {/* Experience List separated by clean 1px hairline rules */}
+            {/* Competitive Achievements */}
+            <div>
+              <MotionReveal>
+                <h3 className="inline-flex items-center gap-2 text-lg font-semibold text-[#FFBC03]">
+                  <Medal size={20} weight="duotone" />
+                  Competitive Experience
+                </h3>
+              </MotionReveal>
+              <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1">
+                {ACHIEVEMENTS.map((item, index) => (
+                  <MotionReveal key={item.id} delay={index * 0.06}>
+                    <div className="h-full rounded-2xl bg-[#001822]/85 p-5 border border-[#FBF4DA]/12 transition-colors hover:border-[#02B08D]/45">
+                      <p className="text-xs italic text-[#FBF4DA]/65">
+                        {item.year}
+                      </p>
+                      <p className="mt-1 text-base font-semibold text-[#FBF4DA]">
+                        {item.award}
+                      </p>
+                      <p className="mt-0.5 text-sm text-[#02B08D]">
+                        {item.event}
+                      </p>
+                    </div>
+                  </MotionReveal>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Work & Organizational Leadership Timeline */}
+          <div className="lg:col-span-7">
             <div className="divide-y divide-[#FBF4DA]/12 border-y border-[#FBF4DA]/12">
               {EXPERIENCES.map((exp, index) => (
                 <article
@@ -62,67 +94,6 @@ export function ExperienceSection() {
                 </article>
               ))}
             </div>
-
-            {/* Competitive Achievements */}
-            <div>
-              <MotionReveal>
-                <h3 className="inline-flex items-center gap-2 text-lg font-semibold text-[#FFBC03]">
-                  <Medal size={20} weight="duotone" />
-                  Competitive Experience
-                </h3>
-              </MotionReveal>
-              <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {ACHIEVEMENTS.map((item, index) => (
-                  <MotionReveal key={item.id} delay={index * 0.06}>
-                    <div className="h-full rounded-2xl bg-[#001822]/85 p-5 border border-[#FBF4DA]/12 transition-colors hover:border-[#02B08D]/45">
-                      <p className="text-xs italic text-[#FBF4DA]/65">
-                        {item.year}
-                      </p>
-                      <p className="mt-1 text-base font-semibold text-[#FBF4DA]">
-                        {item.award}
-                      </p>
-                      <p className="mt-0.5 text-sm text-[#02B08D]">
-                        {item.event}
-                      </p>
-                    </div>
-                  </MotionReveal>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Leadership / Speaking Portrait */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
-            <MotionReveal delay={0.12} y={16}>
-              <div className="relative overflow-hidden rounded-[28px] bg-[#001822] border border-[#FBF4DA]/12 p-6 pb-0 shadow-[0_24px_50px_-20px_rgba(0,0,0,0.65)]">
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute -top-20 -right-16 h-64 w-64 rounded-full bg-[#02B08D]/20 blur-3xl"
-              />
-              <div className="relative z-10 flex items-center justify-between gap-2 pb-4 border-b border-[#FBF4DA]/10">
-                <span className="text-xs font-semibold uppercase tracking-[0.08em] text-[#FFBC03]">
-                  Leadership &amp; Collaboration
-                </span>
-                <span className="text-xs italic text-[#FBF4DA]/65">
-                  FILKOM UB
-                </span>
-              </div>
-
-              <div className="relative mx-auto mt-4 aspect-[4/5] w-full max-w-[360px]">
-                <Image
-                  src="/images/Photo_3.png"
-                  alt="Cakra Syafiq speaking at a student organization event"
-                  fill
-                  sizes="(max-width: 1024px) 85vw, 360px"
-                  className="object-contain object-bottom"
-                />
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#001822] via-[#001822]/45 to-transparent"
-                />
-              </div>
-            </div>
-            </MotionReveal>
           </div>
         </div>
       </div>
