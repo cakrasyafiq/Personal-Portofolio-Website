@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+:root {
+  --bg-canvas: #0b1014;
+  --bg-abyssal: #001822;
+  --accent-emerald: #02b08d;
+  --accent-amber: #ffbc03;
+  --ink-cream: #fbf4da;
+  --ink-mist: rgba(251, 244, 218, 0.72);
+  --border-hairline: rgba(251, 244, 218, 0.14);
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-canvas);
+  color: var(--ink-cream);
+}
+
+body {
+  background-color: var(--bg-canvas);
+  color: var(--ink-cream);
+  font-family: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: var(--font-humane), ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-script {
+  font-family: var(--font-script), cursive;
+}
+
+/* Signature Hero & Footer Emerald-to-Abyssal Mesh Gradient */
+.mesh-hero-bg {
+  background-color: #001822;
+  background-image:
+    radial-gradient(circle at 18% 28%, rgba(2, 176, 141, 0.92) 0%, rgba(2, 176, 141, 0.35) 28%, transparent 58%),
+    radial-gradient(circle at 86% 24%, rgba(69, 139, 198, 0.58) 0%, rgba(30, 74, 118, 0.3) 34%, transparent 62%),
+    radial-gradient(circle at 52% 85%, rgba(0, 24, 34, 0.98) 0%, rgba(0, 18, 28, 1) 60%),
+    linear-gradient(135deg, #027f69 0%, #002331 52%, #091d38 100%);
+}
+
+.mesh-contact-bg {
+  background-color: #001822;
+  background-image:
+    radial-gradient(circle at 12% 20%, rgba(2, 176, 141, 0.75) 0%, rgba(2, 176, 141, 0.22) 34%, transparent 62%),
+    radial-gradient(circle at 88% 82%, rgba(44, 108, 160, 0.42) 0%, transparent 55%),
+    linear-gradient(145deg, #01333b 0%, #001822 65%, #061826 100%);
+}
+
+/* Static SVG Film-Grain Overlay (low GPU cost, pointer-events none) */
+.film-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+/* Subtle selection styling */
+::selection {
+  background-color: rgba(255, 188, 3, 0.28);
+  color: #fbf4da;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
