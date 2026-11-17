@@ -20,7 +20,19 @@ export interface ToolDomain {
   id: string;
   title: string;
   subtitle: string;
-  tools: { name: string; focus: string }[];
+  tools: ToolItem[];
+}
+
+/**
+ * `tone` corrects marks that disappear on the dark canvas:
+ * - "invert": pure black marks (GitHub, ChatGPT) flip to light.
+ * - "invert-hue": dark marks with brand color keep their hue while lightening.
+ */
+export interface ToolItem {
+  name: string;
+  focus: string;
+  logo: string;
+  tone?: "invert" | "invert-hue";
 }
 
 export interface ExperienceItem {
@@ -130,15 +142,14 @@ export const TOOL_DOMAINS: ToolDomain[] = [
     title: "Software Development",
     subtitle: "Backend services, data layers, and responsive web interfaces.",
     tools: [
-      { name: "Python", focus: "AI & Scripting" },
-      { name: "Java", focus: "Core Engineering" },
-      { name: "JavaScript", focus: "Web & Frontend" },
-      { name: "CSS", focus: "Interface Styling" },
-      { name: "Node.js", focus: "Runtime & APIs" },
-      { name: "MySQL", focus: "Relational Data" },
-      { name: "PostgreSQL", focus: "Structured Storage" },
-      { name: "Docker", focus: "Containerization" },
-      { name: "GitHub", focus: "Version Control" },
+      { name: "Python", focus: "AI & Scripting", logo: "/logos/Python.png" },
+      { name: "Java", focus: "Core Engineering", logo: "/logos/Java.png" },
+      { name: "JavaScript", focus: "Web & Frontend", logo: "/logos/Javascript.png" },
+      { name: "CSS", focus: "Interface Styling", logo: "/logos/CSS.png" },
+      { name: "Node.js", focus: "Runtime & APIs", logo: "/logos/Node.png", tone: "invert-hue" },
+      { name: "MySQL", focus: "Relational Data", logo: "/logos/Mysql.png" },
+      { name: "Docker", focus: "Containerization", logo: "/logos/Docker.png" },
+      { name: "GitHub", focus: "Version Control", logo: "/logos/Github.png", tone: "invert" },
     ],
   },
   {
@@ -146,12 +157,12 @@ export const TOOL_DOMAINS: ToolDomain[] = [
     title: "AI & Machine Learning",
     subtitle: "Computer vision pipelines, model inference, and agentic workflows.",
     tools: [
-      { name: "YOLO", focus: "Object Detection" },
-      { name: "OpenCV", focus: "Image Processing" },
-      { name: "Gemini", focus: "Multimodal LLMs" },
-      { name: "ChatGPT", focus: "Reasoning & Prototyping" },
-      { name: "Antigravity", focus: "Agentic Coding" },
-      { name: "Hugging Face", focus: "Model Ecosystem" },
+      { name: "YOLO", focus: "Object Detection", logo: "/logos/Yolo.png" },
+      { name: "OpenCV", focus: "Image Processing", logo: "/logos/Opencv.png" },
+      { name: "Gemini", focus: "Multimodal LLMs", logo: "/logos/Gemini.png" },
+      { name: "ChatGPT", focus: "Reasoning & Prototyping", logo: "/logos/ChatGPT.png", tone: "invert" },
+      { name: "Antigravity", focus: "Agentic Coding", logo: "/logos/Antigravity.png" },
+      { name: "Hugging Face", focus: "Model Ecosystem", logo: "/logos/Huggingface.png" },
     ],
   },
   {
@@ -159,12 +170,12 @@ export const TOOL_DOMAINS: ToolDomain[] = [
     title: "Creative Media",
     subtitle: "Motion graphics, editorial video, and product interface design.",
     tools: [
-      { name: "After Effects", focus: "Motion Design" },
-      { name: "Premiere Pro", focus: "Video Editing" },
-      { name: "Photoshop", focus: "Photo & Compositing" },
-      { name: "CapCut", focus: "Rapid Short-Form" },
-      { name: "Figma", focus: "UI/UX & Prototyping" },
-      { name: "Canva", focus: "Visual Collateral" },
+      { name: "After Effects", focus: "Motion Design", logo: "/logos/AfterEffects.png" },
+      { name: "Premiere Pro", focus: "Video Editing", logo: "/logos/PremierePro.png" },
+      { name: "Photoshop", focus: "Photo & Compositing", logo: "/logos/Photoshop.png" },
+      { name: "CapCut", focus: "Rapid Short-Form", logo: "/logos/Capcut.png" },
+      { name: "Figma", focus: "UI/UX & Prototyping", logo: "/logos/Figma.png" },
+      { name: "Canva", focus: "Visual Collateral", logo: "/logos/Canva.png" },
     ],
   },
 ];

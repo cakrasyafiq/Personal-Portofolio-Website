@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { List, X } from "@phosphor-icons/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { NAV_LINKS } from "@/data/portfolio";
@@ -44,10 +45,15 @@ export function Navbar() {
           className="pointer-events-auto group inline-flex items-center gap-3 rounded-full bg-[#001822]/45 py-1.5 pl-1.5 pr-4 backdrop-blur-md border border-[#FBF4DA]/12 transition-colors hover:border-[#FFBC03]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFBC03]"
           aria-label="Cakra Syafiq Home"
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#FFBC03] text-[#FBF4DA] shadow-sm transition-transform duration-200 group-hover:scale-105">
-            <span className="font-display text-2xl font-bold leading-none tracking-tight text-[#001822] pt-0.5">
-              CS
-            </span>
+          <span className="relative flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full shadow-sm transition-transform duration-200 group-hover:scale-105">
+            <Image
+              src="/images/brand-icon.png"
+              alt=""
+              fill
+              sizes="36px"
+              className="object-cover"
+              priority
+            />
           </span>
           <span className="font-display text-[1.75rem] font-bold uppercase leading-none tracking-[0.02em] text-[#FBF4DA] pt-0.5">
             CAKRA SYAFIQ
