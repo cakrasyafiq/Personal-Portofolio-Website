@@ -6,9 +6,9 @@ export function ExperienceSection() {
   return (
     <section
       id="experience"
-      className="relative bg-[#0B1014] px-4 py-16 sm:px-8 md:px-12 md:py-24"
+      className="relative border-y border-[#FBF4DA]/16 bg-[#18262F] px-4 py-16 sm:px-8 md:px-12 md:py-24"
     >
-      <div className="mx-auto max-w-[1280px] border-t border-[#FBF4DA]/12 pt-16 md:pt-20">
+      <div className="mx-auto max-w-[1280px]">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-12">
           {/* Left Column: Work, Organizational Leadership & Honors */}
           <div className="lg:col-span-7 flex flex-col gap-10">
@@ -67,7 +67,7 @@ export function ExperienceSection() {
                 {ACHIEVEMENTS.map((item) => (
                   <div
                     key={item.id}
-                    className="rounded-2xl bg-[#001822]/65 p-5 border border-[#FBF4DA]/10 transition-colors hover:border-[#02B08D]/45"
+                    className="rounded-2xl bg-[#001822]/85 p-5 border border-[#FBF4DA]/12 transition-colors hover:border-[#02B08D]/45"
                   >
                     <p className="text-xs italic text-[#FBF4DA]/65">
                       {item.year}
@@ -86,7 +86,7 @@ export function ExperienceSection() {
 
           {/* Right Column: Leadership / Speaking Portrait */}
           <div className="lg:col-span-5 flex flex-col justify-between">
-            <div className="relative overflow-hidden rounded-[28px] bg-[#001822]/75 border border-[#FBF4DA]/12 p-6 pb-0 shadow-[0_24px_50px_-20px_rgba(0,0,0,0.65)]">
+            <div className="relative overflow-hidden rounded-[28px] bg-[#001822] border border-[#FBF4DA]/12 p-6 pb-0 shadow-[0_24px_50px_-20px_rgba(0,0,0,0.65)]">
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute -top-20 -right-16 h-64 w-64 rounded-full bg-[#02B08D]/20 blur-3xl"

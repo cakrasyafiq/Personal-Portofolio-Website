@@ -10,16 +10,16 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="relative bg-[#0B1014] px-4 py-20 sm:px-8 md:px-12 md:py-28"
+      className="relative overflow-x-clip bg-[#0B1014] px-4 pt-20 pb-0 sm:px-8 md:px-12 md:pt-28 md:pb-0"
     >
       <div className="mx-auto max-w-[1280px]">
-        <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-12 md:gap-8">
+        <div className="grid grid-cols-1 items-end gap-10 md:grid-cols-12 md:gap-8">
           {/* Left Column: Eyebrow, Monumental Display Title, Career Focus */}
-          <div className="md:col-span-4 md:self-center">
+          <div className="relative z-20 md:col-span-6 md:self-start lg:col-span-4 lg:self-center lg:pb-24">
             <p className="text-lg sm:text-xl font-medium text-[#FFBC03]">
               A Brief Introduction
             </p>
-            <h2 className="relative z-20 mt-1 font-display text-[clamp(4.4rem,40vw,15rem)] font-bold uppercase leading-[0.84] tracking-[-0.01em] text-[#FBF4DA] md:whitespace-nowrap md:pr-4">
+            <h2 className="relative z-20 mt-1 font-display text-[clamp(4.8rem,22vw,9.5rem)] lg:text-[clamp(10rem,16vw,15rem)] font-bold uppercase leading-[0.84] tracking-[-0.01em] text-[#FBF4DA] lg:whitespace-nowrap lg:pr-4">
               ABOUT ME
             </h2>
 
@@ -40,25 +40,21 @@ export function AboutSection() {
             </div>
           </div>
 
-          {/* Center Column: Portrait Cutout Bridging Left & Right */}
-          <div className="relative z-20 flex justify-center md:col-span-4 md:self-end">
-            <div className="relative w-full max-w-[340px] sm:max-w-[380px] aspect-[4/5]">
+          {/* Center Column: Portrait Cutout Grounded Above Section Border */}
+          <div className="order-last relative z-10 flex justify-center self-end md:col-span-12 lg:order-none lg:col-span-4 lg:self-stretch">
+            <div className="relative w-full max-w-[460px] sm:max-w-[540px] md:max-w-[600px] aspect-[876/1080] lg:absolute lg:bottom-0 lg:left-1/2 lg:-translate-x-1/2 lg:h-[100%] lg:w-auto lg:max-w-none">
               <Image
                 src="/images/Photo_2.png"
                 alt="Cakra Syafiq wearing Universitas Brawijaya blazer"
                 fill
-                sizes="(max-width: 768px) 85vw, 380px"
-                className="scale-130 origin-bottom object-contain object-bottom drop-shadow-[0_24px_40px_rgba(0,0,0,0.65)]"
-              />
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#0B1014] via-[#0B1014]/55 to-transparent"
+                sizes="(max-width: 640px) 92vw, (max-width: 1024px) 600px, 460px"
+                className="object-contain object-bottom drop-shadow-[0_18px_36px_rgba(0,0,0,0.6)]"
               />
             </div>
           </div>
 
           {/* Right Column: Bio, Education, Core Skills */}
-          <div className="md:col-span-4 flex flex-col gap-8">
+          <div className="relative z-20 flex flex-col gap-8 md:col-span-6 md:self-start lg:col-span-4 lg:self-center lg:pb-24">
             <div>
               <h3 className="text-xl font-semibold text-[#FFBC03]">
                 Meet Syafiq
