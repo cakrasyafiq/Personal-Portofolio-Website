@@ -34,10 +34,10 @@ export function HeroSection() {
               className="relative z-10 flex w-full flex-col items-center select-none md:mb-[-5.5rem] lg:mb-[-7rem]"
             >
               <div className="relative inline-block text-center">
-                <span className="font-script absolute -top-5 left-1 sm:-top-7 sm:left-2 md:-top-9 md:left-3 z-20 -rotate-3 text-[clamp(1.65rem,4.2vw,3.5rem)] text-[#FFBC03] drop-shadow-[0_4px_14px_rgba(0,24,34,0.45)]">
+                <span className="font-script absolute -top-5 left-1 sm:-top-7 sm:left-2 md:-top-53 md:left-3 z-20 -rotate-3 text-[clamp(1.65rem,4.2vw,3.5rem)] text-[#FFBC03] drop-shadow-[0_4px_14px_rgba(0,24,34,0.45)]">
                   Cakra Syafiq&apos;s
                 </span>
-                <h1 className="font-display text-[clamp(6.2rem,24vw,19.5rem)] font-bold uppercase leading-[0.80] tracking-[-0.015em] text-[#FBF4DA]">
+                <h1 className="font-display text-[clamp(6.2rem,40vw,40rem)] font-bold uppercase leading-[0.20] tracking-[-0.003em] text-[#FBF4DA]">
                   PORTFOLIO
                 </h1>
               </div>
@@ -57,12 +57,7 @@ export function HeroSection() {
                   fill
                   priority
                   sizes="(max-width: 768px) 92vw, 580px"
-                  className="object-contain object-bottom drop-shadow-[0_20px_35px_rgba(0,24,34,0.65)] [filter:contrast(1.06)_brightness(0.86)_saturate(0.82)]"
-                />
-                {/* Subtle Abyssal Navy Tint Overlay matching Reference Duotone */}
-                <div
-                  aria-hidden="true"
-                  className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#001822]/70 via-transparent to-transparent"
+                  className="scale-125 origin-bottom object-contain object-bottom drop-shadow-[0_20px_35px_rgba(0,24,34,0.65)] [filter:contrast(1.06)_brightness(0.86)_saturate(0.82)]"
                 />
               </div>
             </motion.div>
@@ -79,7 +74,7 @@ export function HeroSection() {
                   <span key={item}>{item}</span>
                 ))}
               </div>
-              <div className="font-display text-[clamp(3.6rem,7vw,5.4rem)] font-bold uppercase leading-[0.82] tracking-[-0.01em] text-[#FFBC03] drop-shadow-[0_6px_22px_rgba(0,24,34,0.75)]">
+              <div className="font-display text-[clamp(3.6rem,7vw,5.4rem)] font-bold uppercase leading-[0.82] tracking-[-0.0005em] text-[#FFBC03] drop-shadow-[0_6px_22px_rgba(0,24,34,0.75)]">
                 ENTHUSIAST
               </div>
             </motion.div>

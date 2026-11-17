@@ -19,7 +19,7 @@ export function AboutSection() {
             <p className="text-lg sm:text-xl font-medium text-[#FFBC03]">
               A Brief Introduction
             </p>
-            <h2 className="relative z-10 mt-1 font-display text-[clamp(4.4rem,10vw,7.4rem)] font-bold uppercase leading-[0.84] tracking-[-0.01em] text-[#FBF4DA] md:whitespace-nowrap md:pr-4">
+            <h2 className="relative z-20 mt-1 font-display text-[clamp(4.4rem,40vw,15rem)] font-bold uppercase leading-[0.84] tracking-[-0.01em] text-[#FBF4DA] md:whitespace-nowrap md:pr-4">
               ABOUT ME
             </h2>
 
@@ -48,7 +48,7 @@ export function AboutSection() {
                 alt="Cakra Syafiq wearing Universitas Brawijaya blazer"
                 fill
                 sizes="(max-width: 768px) 85vw, 380px"
-                className="object-contain object-bottom drop-shadow-[0_24px_40px_rgba(0,0,0,0.65)]"
+                className="scale-130 origin-bottom object-contain object-bottom drop-shadow-[0_24px_40px_rgba(0,0,0,0.65)]"
               />
               <div
                 aria-hidden="true"
