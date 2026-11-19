@@ -92,7 +92,7 @@ export function ToolsSection() {
               <p className="text-lg font-medium text-[#FFBC03]">
                 Technical &amp; Creative Stack
               </p>
-              <h2 className="mt-1 font-display text-[clamp(3.8rem,8vw,6.2rem)] font-bold uppercase leading-[0.84] tracking-[-0.01em] text-[#FBF4DA]">
+              <h2 className="mt-1 font-display text-[clamp(3.8rem,8vw,6.2rem)] font-bold uppercase leading-[0.84] tracking-[-0.001em] text-[#FBF4DA]">
                 TOOLS
               </h2>
               <p className="mt-4 max-w-[38ch] text-[0.95rem] leading-[1.6] text-[#FBF4DA]/76">
@@ -115,11 +115,10 @@ export function ToolsSection() {
                       onClick={() =>
                         setSelectedDomain(filter.id as DomainFilter)
                       }
-                      className={`relative isolate inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium transition-colors active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#02B08D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1014] sm:text-sm ${
-                        isActive
+                      className={`relative isolate inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-medium transition-colors active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#02B08D] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1014] sm:text-sm ${isActive
                           ? "font-semibold text-[#001822]"
                           : "border border-[#FBF4DA]/12 text-[#FBF4DA]/80 hover:border-[#02B08D]/60 hover:text-[#FBF4DA]"
-                      }`}
+                        }`}
                     >
                       {isActive && (
                         <motion.span
@@ -134,9 +133,8 @@ export function ToolsSection() {
                       )}
                       {filter.label}
                       <span
-                        className={`tabular-nums ${
-                          isActive ? "text-[#001822]/60" : "text-[#FBF4DA]/40"
-                        }`}
+                        className={`tabular-nums ${isActive ? "text-[#001822]/60" : "text-[#FBF4DA]/40"
+                          }`}
                       >
                         {filter.count}
                       </span>
@@ -183,9 +181,8 @@ export function ToolsSection() {
                     className="border-b border-r border-[#FBF4DA]/10"
                   >
                     <div
-                      className={`flex h-full flex-col justify-between gap-8 px-4 pb-5 pt-6 transition-[opacity,filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-5 sm:pt-7 ${
-                        isLit ? "opacity-100" : "opacity-[0.18] grayscale"
-                      }`}
+                      className={`flex h-full flex-col justify-between gap-8 px-4 pb-5 pt-6 transition-[opacity,filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:px-5 sm:pt-7 ${isLit ? "opacity-100" : "opacity-[0.18] grayscale"
+                        }`}
                     >
                       <div className="relative h-10 w-20 sm:h-11 sm:w-24">
                         <Image
@@ -193,9 +190,8 @@ export function ToolsSection() {
                           alt=""
                           fill
                           sizes="96px"
-                          className={`object-contain object-left ${
-                            tool.tone ? TONE_CLASS[tool.tone] : ""
-                          }`}
+                          className={`object-contain object-left ${tool.tone ? TONE_CLASS[tool.tone] : ""
+                            }`}
                         />
                       </div>
 

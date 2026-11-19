@@ -16,7 +16,7 @@ export function ExperienceSection() {
               <p className="text-lg font-medium text-[#FFBC03]">
                 Journey &amp; Leadership
               </p>
-              <h2 className="mt-1 font-display text-[clamp(3.6rem,7.5vw,5.8rem)] font-bold uppercase leading-[0.86] tracking-[-0.01em] text-[#FBF4DA]">
+              <h2 className="mt-1 font-display text-[clamp(3.6rem,7.5vw,5.8rem)] font-bold uppercase leading-[0.86] tracking-[-0.001em] text-[#FBF4DA]">
                 EXPERIENCE &amp; HONORS
               </h2>
               <p className="mt-4 max-w-[40ch] text-[0.95rem] leading-[1.6] text-[#FBF4DA]/76">
