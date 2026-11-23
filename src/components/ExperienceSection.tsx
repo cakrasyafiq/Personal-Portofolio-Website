@@ -192,62 +192,19 @@ export function ExperienceSection() {
             {activeItem.subtitle} ({activeItem.type}, {activeItem.period}).
           </p>
 
-          {/* TOP PART: Featured Experience Detail (Text Left + Large Photo Right, open layout) */}
+          {/* TOP PART: Full-width 16:9 Featured Photo + Bottom-Left Overlay Detail */}
           <div
             onPointerDown={handlePointerDown}
             onPointerUp={handlePointerUp}
             style={{ touchAction: "pan-y" }}
-            className="grid grid-cols-1 items-center gap-8 select-none lg:grid-cols-12 lg:gap-12"
+            className="relative w-full overflow-hidden rounded-[24px] bg-[#012622] shadow-[0_24px_56px_-12px_rgba(0,0,0,0.72)] select-none sm:aspect-video sm:rounded-[28px]"
           >
-            {/* Detail Text on the Left */}
-            <div className="order-2 flex flex-col justify-center lg:order-1 lg:col-span-5">
+            {/* Full-Width Large Photo preserving 16:9 aspect ratio */}
+            <div className="relative aspect-video w-full overflow-hidden sm:absolute sm:inset-0 sm:aspect-auto">
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div
                   key={activeItem.id}
-                  initial={prefersReducedMotion ? false : { opacity: 0, x: -12 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={prefersReducedMotion ? undefined : { opacity: 0, x: 8 }}
-                  transition={{
-                    duration: transitionDuration,
-                    ease: EASE_EDITORIAL,
-                  }}
-                >
-                  {/* Experience Type + Period */}
-                  <div className="flex flex-wrap items-center gap-3">
-                    <span
-                      className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold tracking-[0.02em] ${activeTypeStyle.badge}`}
-                    >
-                      <ExperienceTypeIcon type={activeItem.type} />
-                      {activeTypeStyle.label}
-                    </span>
-
-                    <time className="text-xs italic text-[#FBF4DA]/70 sm:text-[0.8125rem]">
-                      {activeItem.period}
-                    </time>
-                  </div>
-
-                  {/* Title & Subtitle */}
-                  <h3 className="mt-5 text-2xl font-bold leading-tight tracking-tight text-[#FBF4DA] sm:text-[1.75rem] lg:text-[2rem]">
-                    {activeItem.title}
-                  </h3>
-                  <p className="mt-2 text-sm font-semibold text-[#FFBC03] sm:text-base">
-                    {activeItem.subtitle}
-                  </p>
-
-                  {/* Description */}
-                  <p className="mt-4 max-w-[48ch] text-[0.9375rem] leading-[1.68] text-[#FBF4DA]/84 sm:text-base">
-                    {activeItem.description}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Large Photo on the Right (rounded corners + drop shadow, no border) */}
-            <div className="order-1 relative aspect-[16/10] w-full overflow-hidden rounded-[24px] bg-[#06121A] shadow-[0_24px_56px_-12px_rgba(0,0,0,0.72)] sm:aspect-video sm:rounded-[28px] lg:order-2 lg:col-span-7 lg:aspect-auto lg:h-[420px] xl:h-[450px]">
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.div
-                  key={activeItem.id}
-                  initial={prefersReducedMotion ? false : { opacity: 0, scale: 1.02 }}
+                  initial={prefersReducedMotion ? false : { opacity: 0, scale: 1.015 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={prefersReducedMotion ? undefined : { opacity: 0 }}
                   transition={{
@@ -261,10 +218,69 @@ export function ExperienceSection() {
                     alt={activeItem.imageAlt}
                     fill
                     priority={activeIndex === 0}
-                    sizes="(max-width: 1024px) 100vw, 760px"
-                    style={{ objectPosition: "50% 45%" }}
+                    sizes="(max-width: 1280px) 100vw, 1280px"
+                    style={{ objectPosition: "50% 50%" }}
                     className="object-cover"
                   />
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Mobile bottom-edge transition into the green detail panel */}
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#012622] to-transparent sm:hidden"
+              />
+            </div>
+
+            {/* Green Gradient Fade near the bottom-left detail text on top of the image */}
+            <div
+              aria-hidden="true"
+              className="pointer-events-none hidden sm:block sm:absolute sm:inset-0 sm:z-10"
+              style={{
+                backgroundImage:
+                  "radial-gradient(ellipse 82% 74% at 0% 100%, rgba(1, 38, 34, 0.96) 0%, rgba(2, 68, 56, 0.78) 44%, rgba(2, 102, 84, 0.25) 74%, transparent 100%), linear-gradient(to top, rgba(1, 34, 30, 0.88) 0%, rgba(1, 48, 42, 0.42) 34%, transparent 66%)",
+              }}
+            />
+
+            {/* Detail Text at Bottom-Left Corner */}
+            <div className="relative z-20 p-5 pt-2 sm:absolute sm:bottom-0 sm:left-0 sm:max-w-[640px] sm:p-8 lg:max-w-[680px] lg:p-11">
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={activeItem.id}
+                  initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={prefersReducedMotion ? undefined : { opacity: 0, y: -6 }}
+                  transition={{
+                    duration: transitionDuration,
+                    ease: EASE_EDITORIAL,
+                  }}
+                >
+                  {/* Experience Type + Period */}
+                  <div className="flex flex-wrap items-center gap-3">
+                    <span
+                      className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-semibold tracking-[0.02em] backdrop-blur-sm ${activeTypeStyle.badge}`}
+                    >
+                      <ExperienceTypeIcon type={activeItem.type} />
+                      {activeTypeStyle.label}
+                    </span>
+
+                    <time className="text-xs italic text-[#FBF4DA]/80 sm:text-[0.8125rem]">
+                      {activeItem.period}
+                    </time>
+                  </div>
+
+                  {/* Title & Subtitle */}
+                  <h3 className="mt-3.5 text-2xl font-bold leading-tight tracking-tight text-[#FBF4DA] drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)] sm:mt-4 sm:text-[1.85rem] lg:text-[2.15rem]">
+                    {activeItem.title}
+                  </h3>
+                  <p className="mt-1.5 text-sm font-semibold text-[#FFBC03] sm:text-base">
+                    {activeItem.subtitle}
+                  </p>
+
+                  {/* Description */}
+                  <p className="mt-3 max-w-[56ch] text-[0.9375rem] leading-[1.65] text-[#FBF4DA]/90 sm:text-base">
+                    {activeItem.description}
+                  </p>
                 </motion.div>
               </AnimatePresence>
             </div>
@@ -305,7 +321,7 @@ export function ExperienceSection() {
           <div className="mt-6">
             <div className="mb-3.5 flex items-baseline justify-between gap-4">
               <p className="text-sm font-semibold tracking-wide text-[#FBF4DA]/90 sm:text-base">
-                Explore Experiences
+                Other Experiences
               </p>
             </div>
 
