@@ -35,13 +35,19 @@ export interface ToolItem {
   tone?: "invert" | "invert-hue";
 }
 
+export type ExperienceType = "Work" | "Organization" | "Competitive";
+
 export interface ExperienceItem {
   id: string;
-  type: "Work" | "Organization" | "Achievement";
-  role: string;
-  organization: string;
+  type: ExperienceType;
+  title: string;
+  subtitle: string;
   period: string;
   description: string;
+  image: string;
+  imageAlt: string;
+  /** Focal point used when the image is cropped inside an unselected carousel frame */
+  imagePosition?: string;
 }
 
 export const NAV_LINKS = [
@@ -95,46 +101,67 @@ export const EXPERIENCES: ExperienceItem[] = [
   {
     id: "infomedia",
     type: "Work",
-    role: "AI Automation Intern",
-    organization: "PT Infomedia Nusantara",
+    title: "AI Automation Intern",
+    subtitle: "PT Infomedia Nusantara",
     period: "February 2026 – Present",
     description:
       "Partnered with the engineering team to build a model management platform and an LLM gateway, gaining hands-on experience in agentic AI, automation workflows, and production software engineering.",
+    image: "/images/experiences/Infomedia.png",
+    imageAlt: "Cakra Syafiq at PT Infomedia Nusantara office",
+    imagePosition: "62% 24%",
+  },
+  {
+    id: "hitech-7",
+    type: "Competitive",
+    title: "3rd Place UI/UX Design",
+    subtitle: "Hitech-7",
+    period: "2025",
+    description:
+      "A UI/UX competition held by Himpunan Mahasiswa Sistem Informasi Politeknik Caltex Riau. Made a mobile app design named Ruang Karir, an AI-assisted mobile career preparation platform helping students and fresh graduates bridge industry readiness.",
+    image: "/images/experiences/Hitech_7.png",
+    imageAlt:
+      "Cakra Syafiq and team representing Universitas Brawijaya for 3rd Place UI/UX Design at Hitech-7",
+    imagePosition: "50% 20%",
   },
   {
     id: "hmdtif",
     type: "Organization",
-    role: "Head of Information & Communication Department",
-    organization: "Himpunan Mahasiswa Departemen Teknik Informatika",
+    title: "Information & Communication Department",
+    subtitle: "Himpunan Mahasiswa Departemen Teknik Informatika",
     period: "2024 – 2025",
     description:
-      "Served across two cabinets: began as a staff member in the Creative Media Division before leading the Information and Communication Department.",
+      "Served across three cabinets: began as a staff member in the Creative Media Division. Promoted on the second year as head of Information and Communication Department. Promoted on the third year as a supervisor",
+    image: "/images/experiences/hmdtif.png",
+    imageAlt:
+      "Cabinet group photo of Himpunan Mahasiswa Departemen Teknik Informatika",
+    imagePosition: "50% 45%",
   },
   {
     id: "raion",
     type: "Organization",
-    role: "Product Management & Project Officer (Raion Hackjam)",
-    organization: "Raion Community",
+    title: "Product Management & Project Officer (Raion Hackjam)",
+    subtitle: "Raion Community",
     period: "2024 – 2025",
     description:
       "Contributed to the Product Management division and led execution as Project Officer for the 2025 Raion Hackjam program.",
+    image: "/images/experiences/raion_community.png",
+    imageAlt: "Leading participants at Raion Hackjam 2025 with Raion Community",
+    imagePosition: "74% 35%",
+  },
+  {
+    id: "dekan-cup",
+    type: "Competitive",
+    title: "1st Place PKM-PI",
+    subtitle: "Dekan Cup FILKOM UB",
+    period: "2023",
+    description:
+      "A research competition held by FILKOM UB to encourage new students to compete with their research ideas. Proposed a smart parking system for a nearby mall next to Universitas Brawijaya.",
+    image: "/images/experiences/Dekan_Cup.png",
+    imageAlt:
+      "Cakra Syafiq and team holding the 1st Place PKM-PI award at Dekan Cup FILKOM UB",
+    imagePosition: "50% 22%",
   },
 ];
-
-export const ACHIEVEMENTS = [
-  {
-    id: "hitech-7",
-    award: "3rd Place UI/UX Design",
-    event: "Hitech-7",
-    year: "2025",
-  },
-  {
-    id: "dekat-cup",
-    award: "1st Place PKM-PI",
-    event: "Dekat Cup FILKOM UB",
-    year: "2023",
-  },
-] as const;
 
 export const TOOL_DOMAINS: ToolDomain[] = [
   {
