@@ -51,7 +51,7 @@ export function ProjectsSection() {
             <p className="text-lg font-medium text-[#FFBC03]">
               Featured Case Studies
             </p>
-            <h2 className="mt-1 font-display text-[clamp(3.8rem,8.5vw,6.5rem)] font-bold uppercase leading-[0.84] tracking-[-0.01em] text-[#FBF4DA]">
+            <h2 className="mt-1 font-display text-[clamp(3.8rem,8.5vw,6.5rem)] font-bold uppercase leading-[0.84] tracking-[-0.001em] text-[#FBF4DA]">
               PROJECTS
             </h2>
           </div>
@@ -70,11 +70,10 @@ export function ProjectsSection() {
                   role="tab"
                   aria-selected={isActive}
                   onClick={() => setActiveFilter(filter.id)}
-                  className={`relative rounded-full px-4 py-2 text-xs sm:text-sm font-medium transition-colors active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#02B08D] ${
-                    isActive
+                  className={`relative rounded-full px-4 py-2 text-xs sm:text-sm font-medium transition-colors active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#02B08D] ${isActive
                       ? "text-[#001822] font-semibold"
                       : "bg-white/[0.05] text-[#FBF4DA]/80 border border-[#FBF4DA]/12 hover:border-[#02B08D]/60 hover:text-[#FBF4DA]"
-                  }`}
+                    }`}
                 >
                   {isActive && (
                     <motion.span
@@ -142,11 +141,10 @@ export function ProjectsSection() {
                     alt={`${project.title} preview`}
                     fill
                     sizes="(max-width: 768px) 95vw, 580px"
-                    className={`${
-                      project.imageAspect === "portrait"
+                    className={`${project.imageAspect === "portrait"
                         ? "object-contain p-3"
                         : "object-cover"
-                    } transition-transform duration-500 ease-out group-hover:scale-[1.02]`}
+                      } transition-transform duration-500 ease-out group-hover:scale-[1.02]`}
                   />
                   <span className="absolute right-4 bottom-4 inline-flex items-center gap-1.5 rounded-full bg-[#001822]/85 px-3.5 py-1.5 text-xs font-medium text-[#FBF4DA] backdrop-blur-md border border-[#FBF4DA]/18 opacity-90 transition-all group-hover:border-[#02B08D] group-hover:text-[#02B08D]">
                     <Eye size={14} weight="bold" />

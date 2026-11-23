@@ -49,7 +49,7 @@ export function ContactSection() {
                 <p className="text-lg font-medium text-[#FFBC03]">
                   Open for Collaborations &amp; Roles
                 </p>
-                <h2 className="mt-2 font-display text-[clamp(3.8rem,9vw,6.8rem)] font-bold uppercase leading-[0.84] tracking-[-0.01em] text-[#FBF4DA]">
+                <h2 className="mt-2 font-display text-[clamp(3.8rem,9vw,6.8rem)] font-bold uppercase leading-[0.84] tracking-[-0.001em] text-[#FBF4DA]">
                   LET&apos;S BUILD TOGETHER
                 </h2>
                 <p className="mt-4 max-w-[52ch] text-[0.96875rem] leading-[1.65] text-[#FBF4DA]/84">
